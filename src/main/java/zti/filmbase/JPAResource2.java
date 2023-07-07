@@ -4,32 +4,29 @@ import jakarta.persistence.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.CacheControl;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.eclipse.persistence.sessions.Session;
 import zti.model.Movie;
 import zti.model.Users;
 import zti.model.Watchlist;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import static jakarta.persistence.Persistence.createEntityManagerFactory;
 
-@Path("/jpa")
-public class JPAResource {
+@Path("/jpa2")
+public class JPAResource2 {
     private EntityManagerFactory managerFactory;
     private EntityManager entityManager;
     private EntityTransaction entityTransaction;
     @Context
     private HttpServletRequest request;
     private StringBuilder htmlBuilder;
-    public JPAResource() {
+    public JPAResource2() {
         managerFactory = createEntityManagerFactory("PU_Postgresql");
         entityManager = managerFactory.createEntityManager();
         entityTransaction = entityManager.getTransaction();
@@ -63,6 +60,7 @@ public class JPAResource {
         htmlBuilder.append("<div style='text-align: center;'>");
     }
 
+
     /**
      *
      * @return
@@ -71,69 +69,6 @@ public class JPAResource {
     @Path("/movies")
     @Produces({MediaType.TEXT_HTML})
     public String getMovies() {
-        htmlBuilder = new StringBuilder();
-        htmlBuilder.append("<html>");
-        htmlBuilder.append("<head>");
-        htmlBuilder.append("<title>ZTI - film</title>");
-        htmlBuilder.append("<style>");
-        htmlBuilder.append("body { background-color: #111111; color: white;\n");
-        htmlBuilder.append("  height: 100vh;\n");
-        htmlBuilder.append("}\n");
-        htmlBuilder.append("button style='background-color: #013220; color: white;\n");
-        htmlBuilder.append("a:link { color: yellow; }\n");
-        htmlBuilder.append("a:visited { color: orange; }\n");
-        htmlBuilder.append("form {\n");
-        htmlBuilder.append("  align-items: center;\n");
-        htmlBuilder.append("  text-align: center;\n");
-        htmlBuilder.append("}\n");
-        htmlBuilder.append("table {\n");
-        htmlBuilder.append("    width: 100%;\n");
-        htmlBuilder.append("    border-collapse: collapse;\n");
-        htmlBuilder.append("}\n");
-        htmlBuilder.append("th, td {\n");
-        htmlBuilder.append("    border: 1px solid white;\n");
-        htmlBuilder.append("    padding: 8px;\n");
-        htmlBuilder.append("    text-align: left;\n");
-        htmlBuilder.append("}\n");
-        htmlBuilder.append("</style>");
-        htmlBuilder.append("<script>");
-        htmlBuilder.append("function fetchMovies() {")
-        .append("fetch('http://localhost:8080/film-base-1.0-SNAPSHOT/api/jpa/movies')")
-            .append(".then(response => response.text())")
-            .append(".then(data => {")
-            .append("const parser = new DOMParser();")
-            .append("const newDocument = parser.parseFromString(data, 'text/html');")
-            .append("document.head.innerHTML = newDocument.head.innerHTML;")
-            .append("document.body.innerHTML = newDocument.body.innerHTML;")
-            .append("})")
-            .append(".catch(error => {")
-            .append("console.error('Error:', error);")
-            .append("});")
-        .append("}");
-        htmlBuilder.append("function fetchLogin() {")
-        .append("fetch('http://localhost:8080/film-base-1.0-SNAPSHOT/api/jpa/login')")
-            .append(".then(response => response.text())")
-            .append(".then(data => {")
-            .append("document.body.innerHTML = data;")
-            .append("})")
-            .append(".catch(error => {")
-            .append("console.error('Error:', error);")
-            .append("});")
-        .append("}");
-        htmlBuilder.append("function fetchRegister() {")
-        .append("fetch('http://localhost:8080/film-base-1.0-SNAPSHOT/api/jpa/register')")
-        .append(".then(response => response.text())")
-        .append(".then(data => {")
-        .append("document.body.innerHTML = data;")
-        .append("})")
-        .append(".catch(error => {")
-        .append("console.error('Error:', error);")
-        .append("});")
-        .append("}");
-        htmlBuilder.append("</script>");
-        htmlBuilder.append("</head>");
-        htmlBuilder.append("<body>");
-        htmlBuilder.append("<div style='text-align: center;'>");
         String name = (String) request.getSession().getAttribute("username");
         if (name != null) {
             htmlBuilder.append("<p1>Hello " + name + " </p1>");
@@ -141,8 +76,8 @@ public class JPAResource {
             htmlBuilder.append("<a href='rating'><button style='background-color: #013220; color: white;'>Rating</button></a>");
             htmlBuilder.append("<a href='logout'><button style='background-color: #013220; color: white;'>Logout</button></a>");
         } else {
-            htmlBuilder.append("<button onclick=\"fetchLogin()\" style='background-color: #013220; color: white;'>Login</button>");
-            htmlBuilder.append("<button onclick=\"fetchRegister()\" style='background-color: #013220; color: white;'>Register</button>");
+            htmlBuilder.append("<a href='login'><button style='background-color: #013220; color: white;'>Login</button></a>");
+            htmlBuilder.append("<a href='register'><button style='background-color: #013220; color: white;'>Register</button></a>");
         }
 
         try {
@@ -431,9 +366,6 @@ public class JPAResource {
     @Path("/login")
     @Produces(MediaType.TEXT_HTML)
     public String getLoginPage() {
-        htmlBuilder = new StringBuilder();
-        htmlBuilder.append("<body>");
-        htmlBuilder.append("<div style='text-align: center;'>");
         htmlBuilder.append("<form action='login' method='POST'>");
         htmlBuilder.append("<label for='username'>Username:</label></br>");
         htmlBuilder.append("<input type='text' id='username' name='username'></br>");
@@ -441,10 +373,11 @@ public class JPAResource {
         htmlBuilder.append("<input type='password' id='password' name='password'></br>");
         htmlBuilder.append("<input type='submit' value='Login'>");
         htmlBuilder.append("</form>");
-        htmlBuilder.append("</br><button onclick=\"fetchRegister()\" style='background-color: #013220; color: white;'>Register</button>");
-        htmlBuilder.append("<button onclick=\"fetchMovies()\" style='background-color: #013220; color: white;'>Movies</button>");
+        htmlBuilder.append("</br><a href='register'><button style='background-color: #013220; color: white;'>Register</button></a>");
+        htmlBuilder.append("<a href='movies'><button style='background-color: #013220; color: white;'>Movies</button></a>");
         htmlBuilder.append("</div>");
         htmlBuilder.append("</body>");
+        htmlBuilder.append("</html>");
 
         return htmlBuilder.toString();
     }
@@ -478,9 +411,6 @@ public class JPAResource {
     @Path("/register")
     @Produces(MediaType.TEXT_HTML)
     public String getRegisterPage() {
-        htmlBuilder = new StringBuilder();
-        htmlBuilder.append("<body>");
-        htmlBuilder.append("<div style='text-align: center;'>");
         htmlBuilder.append("<form action='register' method='POST'>");
         htmlBuilder.append("<label for='username'>Username:</label></br>");
         htmlBuilder.append("<input type='text' id='username' name='username'></br>");
@@ -493,10 +423,11 @@ public class JPAResource {
         }
 
         htmlBuilder.append("</form>");
-        htmlBuilder.append("</br><button onclick=\"fetchLogin()\" style='background-color: #013220; color: white;'>Login instead</button>");
-        htmlBuilder.append("<button onclick=\"fetchMovies()\" style='background-color: #013220; color: white;'>Movies</button>");
+        htmlBuilder.append("</br><a href='login'><button style='background-color: #013220; color: white;'>Login instead</button></a></br>");
+        htmlBuilder.append("<a href='movies'><button style='background-color: #013220; color: white;'>Movies</button></a>");
         htmlBuilder.append("</div>");
         htmlBuilder.append("</body>");
+        htmlBuilder.append("</html>");
 
         return htmlBuilder.toString();
     }

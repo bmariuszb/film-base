@@ -17,6 +17,7 @@ public class FilmsBaseApplication extends Application {
     public Set<Class<?>> getClasses() {
         HashSet<Class<?>> set = new HashSet<Class<?>>();
         set.add(JPAResource.class);
+        set.add(JPAResource2.class);
         set.add(HelloResource.class);
         return set;
     }
