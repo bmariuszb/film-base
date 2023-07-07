@@ -10,28 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e1d07a0-a5e5-4df0-8e5f-79b4c898c425" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../demo1/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/.idea/runConfigurations/TomEE_10_0_27.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/.idea/runConfigurations/TomEE_10_0_27.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zti/filmbase/DatabaseChangeAspect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zti/filmbase/FilmsBaseApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zti/filmbase/JPAResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zti/model/Movie.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zti/model/Users.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zti/model/Watchlist.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/aop.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/zti/filmbase/JPAResourceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/zti/filmbase/HelloApplication.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +21,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -47,6 +29,9 @@
     <option name="FILTER_INFO" value="true" />
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -66,14 +51,25 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "aspect.path.notification.shown": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/mar/documents/studies/film-base/src/main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main" />
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
+      <recent name="$PROJECT_DIR$/src/main/java/zti" />
+      <recent name="$PROJECT_DIR$/src/main/java/zti/filmbase" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="TomEE 10.0.27" type="TomeeConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="TomEE 10.0.27" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/film-base-1.0-SNAPSHOT/api/hello-world" />
@@ -172,6 +168,7 @@
       <option name="presentableId" value="Default" />
       <updated>1688750069827</updated>
       <workItem from="1688750070823" duration="961000" />
+      <workItem from="1688754409416" duration="1413000" />
     </task>
     <servers />
   </component>

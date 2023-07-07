@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <Resource id="jdbc/postgres" type="javax.sql.DataSource">
+        JdbcDriver = org.postgresql.Driver
+        JdbcUrl   = 	jdbc:postgresql://peanut.db.elephantsql.com:5432/nhpbzgtj
+        UserName  = nhpbzgtj
+        Password  = PQdkCLcK3KhC8_Xj7JyY6Trw3uVi_pP-
+        JtaManaged = false
+        initialSize = 2
+        maxActive = 2
+        maxIdle = 1
+        minIdle = 1
+    </Resource>
+</resources>
