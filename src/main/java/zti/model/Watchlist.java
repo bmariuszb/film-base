@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @NamedQuery(name = "getAllRating", query = "SELECT u FROM Watchlist u WHERE u.rating is not null AND u.user.id = :userId")
 @NamedQuery(name = "Watchlist.deleteByUserAndMovie", query = "DELETE FROM Watchlist w WHERE w.user = :user AND w.movie = :movie")
 @NamedQuery(name = "selectByUserAndMovie", query = "SELECT w FROM Watchlist w WHERE w.user = :user AND w.movie = :movie")
+@NamedQuery(name = "Watchlist.exists", query = "SELECT COUNT(w) FROM Watchlist w WHERE w.user.id = :userId AND w.movie.id = :movieId")
 public class Watchlist implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

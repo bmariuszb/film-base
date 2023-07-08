@@ -18,7 +18,7 @@ public class FilmsBaseApplication extends Application {
         HashSet<Class<?>> set = new HashSet<Class<?>>();
         set.add(JPAResource.class);
         set.add(JPAResource2.class);
-        set.add(HelloResource.class);
+        set.add(FilmBaseWebsocketEndpoint.class);
         return set;
     }
 }
