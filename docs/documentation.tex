@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\title{Baza filmów}
+\author{Autor: Mariusz Biegański}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Opis funkcjonalności}
+\subsection{Serwer}
+\begin{itemize}
+	\item Uruchomienie aplikacji w kontenerze Docker z użyciem pliku .war.
+	\item Obsługa zdarzeń za pomocą języka AspectJ dla dodawania/aktualizowania oceny filmu.
+	\item Wykorzystanie websocketów do wyświetlania formularza logowania.
+	\item Generowanie aplikacji klienta.
+	\item Generowanie HTML z tabelą z informacjami o filmach dostępnych w bazie danych.
+	\item Generowanie HTML z formularzem logowania.
+	\item Obsługa logowania.
+	\item Generowanie HTML z formularzem rejestracji.
+	\item Obsługa rejestracji.
+	\item Obsługa wylogowania.
+	\item Generowanie HTML z listą filmów do obejrzenia.
+	\item Generowanie HTML z listą ocen filmów.
+	\item Obsługa dodawania filmu do listy do obejrzenia.
+	\item Obsługa usuwania filmu z listy do obejrzenia.
+	\item Obsługa dodawania lub zmiany oceny filmu.
+\end{itemize}
+
+\subsection{Klient}
+\begin{itemize}
+\item Przesłanie zapytania o listę filmów.
+\item Przesłanie zapytania o formularz logowania.
+\item Przesłanie zapytania o formularz rejestracji.
+\item Przesłanie zapytania o logowanie wraz z danymi.
+\item Przesłanie zapytania o rejestrację wraz z danymi.
+\item Przesłanie zapytania o wylogowanie.
+\item Przesłanie zapytania o listę filmów do obejrzenia.
+\item Przesłanie zapytania o usunięcie filmu z listy do obejrzenia.
+\item Przesłanie zapytania o dodanie filmu do listy do obejrzenia.
+\item Przesłanie zapytania o listę filmów wraz z oceną użytkownika.
+\item Przesłanie zapytania o stworzenie/zmianę oceny filmu.
+\end{itemize}
+
+\subsection{Opis}
+Serwer jest uruchamiany w kontenerze Docker z użyciem pliku .war. Obsługuje zdarzenia związane z dodawaniem i aktualizowaniem ocen filmów przy użyciu języka AspectJ. Wykorzystuje websockety do wyświetlania formularza logowania. Serwer generuje również aplikację klienta oraz różne HTML-owe widoki, takie jak tabela z informacjami o filmach, formularze logowania i rejestracji, listy filmów do obejrzenia oraz listy ocen filmów. \\
+Klient komunikuje się z serwerem poprzez przesyłanie zapytań. Po otrzymaniu odpowiedzi od serwera, które zazwyczaj zawierają nową zawartość HTML, klient po prostu podmienia treść aktualnego dokumentu HTML na nową. W ten sposób klient dynamicznie aktualizuje wyświetlaną stronę, bez potrzeby przeładowywania całego dokumentu. \\
+Dzięki takiemu podejściu serwer i klient współpracują, umożliwiając interakcję użytkownika z aplikacją filmową.
+
+\section{Diagramy UML}
+W ramach dokumentacji projektowej przedstawiam poniższe diagramy, które ilustrują różne aspekty mojej aplikacji filmowej:
+
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=0.8\textwidth]{use-case.jpg}
+%  \caption{Diagram przypadków użycia}
+%\end{figure}
+%
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=0.8\textwidth]{class-diagram.jpg}
+%  \caption{Diagram klas}
+%\end{figure}
+%
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=0.8\textwidth]{sequence-diagram.jpg}
+%  \caption{Diagram sekwencji}
+%\end{figure}
+%
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=0.6\textwidth]{state-diagram.jpg}
+%  \caption{Diagram stanów}
+%\end{figure}
+
+Te diagramy pomogą zrozumieć różne aspekty funkcjonalności i struktury aplikacji filmowej.
+
+\section{Informacja uruchomieniowa}
+Aby uruchomić aplikację Film-Base, postępuj zgodnie z poniższymi instrukcjami:
+
+\begin{enumerate}
+  \item Pobierz plik film-base.tar z repozytorium: \texttt{https://github.com/bmariuszb/film-base}.
+  
+  \item Załaduj obraz Docker z pliku film-base.tar, używając polecenia:
+  \begin{verbatim}
+  docker load -i film-base.tar
+  \end{verbatim}
+  
+  \item Uruchom kontener Docker z aplikacją Film-Base, używając polecenia:
+  \begin{verbatim}
+  docker run --rm -p 127.0.0.1:8080:8080 --name film-base film-base
+  \end{verbatim}
+  
+  \item Otwórz przeglądarkę internetową i przejdź do adresu:
+  \begin{verbatim}
+  http://localhost:8080/film-base-1.0-SNAPSHOT/api/jpa/movies
+  \end{verbatim}
+\end{enumerate}
+
+Po wykonaniu tych kroków, powinieneś być w stanie uruchomić aplikację Film-Base i uzyskać dostęp do listy filmów poprzez podany adres URL.\\
+
+Przykładowy użytkownik został stworzony z następującymi danymi logowania:
+\begin{itemize}
+  \item Nazwa użytkownika: admin
+  \item Hasło: admin
+\end{itemize}
+
+Możesz użyć tych danych logowania, aby zalogować się do aplikacji i uzyskać dostęp do jej funkcjonalności.
+
+
+\end{document}

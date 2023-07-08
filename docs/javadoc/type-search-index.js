@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"zti.filmbase","l":"DatabaseChangeAspect"},{"p":"zti.filmbase","l":"FilmBaseWebsocketEndpoint"},{"p":"zti.filmbase","l":"FilmsBaseApplication"},{"p":"zti.filmbase","l":"JPAResource"},{"p":"zti.model","l":"Movie"},{"p":"zti.model","l":"Users"},{"p":"zti.model","l":"Watchlist"}]
