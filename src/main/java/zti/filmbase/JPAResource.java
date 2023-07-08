@@ -7,18 +7,18 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 import zti.model.Movie;
 import zti.model.Users;
 import zti.model.Watchlist;
-
 import java.math.BigDecimal;
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import static jakarta.persistence.Persistence.createEntityManagerFactory;
 
+/**
+ * Represents a resource class for handling JPA-related and JAX-RS operations.
+ */
 @Path("/jpa")
 public class JPAResource {
     private EntityManagerFactory managerFactory;
@@ -27,6 +27,9 @@ public class JPAResource {
     @Context
     private HttpServletRequest request;
     private StringBuilder htmlBuilder;
+    /**
+     * Constructs a new instance of the JPAResource class.
+     */
     public JPAResource() {
         managerFactory = createEntityManagerFactory("PU_Postgresql");
         entityManager = managerFactory.createEntityManager();
@@ -34,8 +37,9 @@ public class JPAResource {
     }
 
     /**
+     * Retrieves the movies as an HTML representation.
      *
-     * @return
+     * @return The HTML representation of the movies.
      */
     @GET
     @Path("/movies")
@@ -242,6 +246,9 @@ public class JPAResource {
         return htmlBuilder.toString();
     }
 
+    /**
+     * Generates the body of the movies HTML representation.
+     */
     public void getMoviesBody() {
         htmlBuilder.append("<body>");
         htmlBuilder.append("<div style='text-align: center;'>");
@@ -338,6 +345,11 @@ public class JPAResource {
         htmlBuilder.append("</body>");
     }
 
+    /**
+     * Retrieves the watchlist as an HTML representation.
+     *
+     * @return The HTML representation of the watchlist.
+     */
     @GET
     @Path("/watchlist")
     @Produces({MediaType.TEXT_HTML})
@@ -379,6 +391,11 @@ public class JPAResource {
         return htmlBuilder.toString();
     }
 
+    /**
+     * Retrieves the rating as an HTML representation.
+     *
+     * @return The HTML representation of the rating.
+     */
     @GET
     @Path("/rating")
     @Produces({MediaType.TEXT_HTML})
@@ -437,6 +454,12 @@ public class JPAResource {
         return htmlBuilder.toString();
     }
 
+    /**
+     * Handles the rating of a movie.
+     *
+     * @param rateData The JSON object containing the movie ID and rating.
+     * @return The HTML representation of the updated movies page or rating page.
+     */
     @POST
     @Path("/rateMovie")
     @Produces({MediaType.TEXT_HTML})
@@ -498,6 +521,12 @@ public class JPAResource {
         return htmlBuilder.toString();
     }
 
+    /**
+     * Adds a movie to the user's watchlist.
+     *
+     * @param watchlistData The JSON object containing the movie ID.
+     * @return The HTML representation of the updated movies page.
+     */
     @POST
     @Path("/addMovieToWatchlist")
     @Produces(MediaType.TEXT_HTML)
@@ -528,6 +557,12 @@ public class JPAResource {
         return htmlBuilder.toString();
     }
 
+    /**
+     * Deletes a movie from the user's watchlist.
+     *
+     * @param watchlistData The JSON object containing the movie ID.
+     * @return The HTML representation of the updated movies page or watchlist page.
+     */
     @DELETE
     @Path("/deleteMovieFromWatchlist")
     @Produces(MediaType.TEXT_HTML)
@@ -554,6 +589,11 @@ public class JPAResource {
         return htmlBuilder.toString();
     }
 
+    /**
+     * Logs out the user and returns the HTML representation of the updated movies page.
+     *
+     * @return The HTML representation of the updated movies page.
+     */
     @GET
     @Path("/logout")
     @Produces(MediaType.TEXT_HTML)
@@ -565,6 +605,11 @@ public class JPAResource {
         return htmlBuilder.toString();
     }
 
+    /**
+     * Retrieves the login page.
+     *
+     * @return The HTML representation of the login page.
+     */
     @GET
     @Path("/login")
     @Produces(MediaType.TEXT_HTML)
@@ -587,6 +632,12 @@ public class JPAResource {
         return htmlBuilder.toString();
     }
 
+    /**
+     * Handles user login.
+     *
+     * @param loginData The JSON object containing the login data (username and password).
+     * @return The HTML representation of the movies page if login is successful, otherwise the login page.
+     */
     @POST
     @Path("/login")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -627,6 +678,11 @@ public class JPAResource {
         }
     }
 
+    /**
+     * Retrieves the registration page.
+     *
+     * @return The HTML representation of the registration page.
+     */
     @GET
     @Path("/register")
     @Produces(MediaType.TEXT_HTML)
@@ -654,13 +710,19 @@ public class JPAResource {
         return htmlBuilder.toString();
     }
 
+    /**
+     * Handles user registration.
+     *
+     * @param registerData The JSON object containing the registration data (username and password).
+     * @return The HTML representation of the movies page if registration is successful, otherwise the registration page.
+     */
     @POST
     @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_HTML)
-    public String register(JsonObject loginData) {
-        String username = loginData.getString("username");
-        String password = loginData.getString("password");
+    public String register(JsonObject registerData) {
+        String username = registerData.getString("username");
+        String password = registerData.getString("password");
 
         System.out.println("Trying to register as:");
         System.out.println("username: " + username);
